@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ATOM Logistics Technology</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="AI-driven cross-border logistics platform: WMS, OMS, shipping gateway, tracking, and AI packing verification in one system." />
+
+  <style>
+    :root {
+      --bg: #021b26;
+      --bg-soft: #032633;
+      --accent: #08d6ff;
+      --accent-soft: #0fbad8;
+      --text: #f5f7fa;
+      --muted: #a7b3c2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui,-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #04384c 0, var(--bg) 50%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 20px 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-wrap img {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+    }
+    nav a {
+      margin-left: 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    nav a:hover { color: var(--accent); }
+
+    .hero {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-bottom: 40px;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3.2vw, 2.7rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .hero-highlight {
+      background: linear-gradient(90deg, var(--accent), #6af2ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-sub {
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 24px;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .tag {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(8,214,255,0.4);
+      color: var(--accent-soft);
+      background: rgba(3, 53, 70, 0.6);
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #012029;
+    }
+    .btn-primary:hover {
+      background: #6af2ff;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(8,214,255,0.4);
+    }
+    .btn-ghost:hover {
+      background: rgba(4, 52, 68, 0.7);
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #032836, #021820);
+      border-radius: 24px;
+      padding: 20px 22px;
+      border: 1px solid rgba(8,214,255,0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .hero-card h3 {
+      font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .metric {
+      flex: 1;
+      background: rgba(2,35,47,0.9);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .metric strong {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 20px 10px;
+    }
+    .section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .section p {
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 0.95rem;
+    }
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .feat-card {
+      background: #031e2a;
+      border-radius: 16px;
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(255,255,255,0.03);
+      font-size: 0.9rem;
+    }
+    .feat-card h3 {
+      font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 6px;
+      color: var(--accent-soft);
+    }
+
+    .contact-box {
+      margin-top: 24px;
+      background: #031820;
+      border-radius: 16px;
+      padding: 16px 18px;
+      border: 1px solid rgba(8,214,255,0.25);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    footer {
+      text-align: center;
+      padding: 24px 12px 32px;
+      font-size: 0.8rem;
+      color: #6f7a86;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <img src="images/logo.png" alt="ATOM logo" />
+    <div>
+      <div style="font-weight:600;">ATOM Logistics Technology</div>
+      <div style="font-size:0.8rem; color:var(--muted);">
+        AI-Driven Cross-Border Logistics Platform
+      </div>
+    </div>
+  </div>
+  <nav>
+    <a href="#platform">Platform</a>
+    <a href="#technology">Technology</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="hero-title">
+      AI-powered <span class="hero-highlight">logistics brain</span><br />
+      for cross-border operations.
+    </div>
+    <p class="hero-sub">
+      ATOM unifies warehouse management (WMS), order management (OMS),
+      multi-carrier shipping, customs tracking, and AI packing verification
+      into one cloud platform — built in Chiang Mai, ready for global trade.
+    </p>
+
+    <div class="tag-row">
+      <span class="tag">WMS / OMS</span>
+      <span class="tag">Multi-carrier Shipping API</span>
+      <span class="tag">AI Packing Verification</span>
+      <span class="tag">Cross-border Tracking</span>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
+        Contact for Pilot Project
+      </button>
+      <button class="btn btn-ghost" onclick="document.getElementById('platform').scrollIntoView({behavior:'smooth'});">
+        View Platform Overview
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h3>Designed for logistics operators, 3PLs, and cross-border sellers</h3>
+    <div class="metric-row">
+      <div class="metric">
+        <strong>WMS + OMS</strong>
+        Unified inventory, location, and order flow in one system.
+      </div>
+      <div class="metric">
+        <strong>API Gateway</strong>
+        Single interface for carriers, customs, and marketplaces.
+      </div>
+    </div>
+    <div class="metric-row">
+      <div class="metric">
+        <strong>AI QC</strong>
+        Photo-based packing verification to reduce shipping errors.
+      </div>
+      <div class="metric">
+        <strong>Tracking Hub</strong>
+        Customs + carrier status on one timeline for every parcel.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platform" class="section">
+  <h2>Platform Overview</h2>
+  <p>
+    ATOM is a modular logistics platform that connects warehouse operations,
+    order orchestration, shipping labels, and cross-border tracking. Each
+    module can be rolled out step-by-step to match the maturity of each
+    warehouse or 3PL.
+  </p>
+
+  <div class="feat-grid">
+    <div class="feat-card">
+      <h3>Warehouse Management (WMS)</h3>
+      <p>
+        Location-based inventory, inbound &amp; outbound, weight &amp; volume,
+        photo/ video capture, and history logs optimized for real operations.
+      </p>
+    </div>
+    <div class="feat-card">
+      <h3>Order Management (OMS)</h3>
+      <p>
+        Merge orders, generate packing lists, assign boxes, and prepare
+        cross-border documentation from one screen.
+      </p>
+    </div>
+    <div class="feat-card">
+      <h3>Shipping Gateway</h3>
+      <p>
+        Connect multiple carriers and international couriers through a single
+        API and UI, including label printing and rate rules.
+      </p>
+    </div>
+    <div class="feat-card">
+      <h3>Tracking &amp; Customs</h3>
+      <p>
+        Consolidate carrier and customs status into one unified timeline,
+        including export &amp; import milestones.
+      </p>
+    </div>
+    <div class="feat-card">
+      <h3>AI Packing Verification</h3>
+      <p>
+        Use cameras at the packing station to confirm that the right items
+        and quantities are in each box before sealing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="technology" class="section">
+  <h2>Technology Stack</h2>
+  <p>
+    The core platform is built with a service-oriented architecture:
+    Java/Spring backend, .NET desktop clients for warehouse floors,
+    modern web UI, and Python-based computer vision for AI QC.
+  </p>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <p>
+    For BOI discussions, pilot projects, or technical collaboration in
+    Thailand and cross-border logistics, please reach out:
+  </p>
+  <div class="contact-box">
+    <div><strong>ATOM Logistics Technology Co., Ltd.</strong></div>
+    <div style="margin-top:4px;">
+      Email: <a href="mailto:info@atomlt.com">info@atomlt.com</a> (예시, 실제 사용 이메일로 변경)
+    </div>
+    <div>Location: Chiang Mai, Thailand</div>
+    <div style="margin-top:6px; font-size:0.85rem;">
+      For Thai language contact, LINE or phone support will be available soon.
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> ATOM Logistics Technology Co., Ltd. All rights reserved.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
